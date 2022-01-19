@@ -36,7 +36,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 WordCount *word_counts = NULL;
 
 /* The maximum length of each word in a file */
-#define MAX_WORD_LEN 4
+#define MAX_WORD_LEN 64
 
 /*
  * 3.1.1 Total Word Count
