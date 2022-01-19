@@ -48,14 +48,20 @@ int num_words(FILE* infile) {
   int num_words = 0;
   char c;
   int len = 0;
+
   while (((c = fgetc(infile)) != EOF)) {
     if (isalpha(c)) {
-      len++;
+      if (len < MAX_WORD_LEN) {
+        len++;
+      } else if (len == MAX_WORD_LEN) {
+        len = 1;
+        num_words++;
+      }
     } else {
-      if (len != 1 && len <= MAX_WORD_LEN && len != 0) {
+      if (len >= 1) {
+        len = 0;
         num_words++;
       } 
-      
       len = 0;
     }
   }
@@ -74,36 +80,26 @@ int num_words(FILE* infile) {
  * Useful functions: fgetc(), isalpha(), tolower(), add_word().
  */
 void count_words(WordCount **wclist, FILE *infile) {
-  char* word = malloc(MAX_WORD_LEN + 2);
+  int num_words = 0;
   char c;
-  int len = 0;
-  int cur_pos = 0;
-
-  while (((c=fgetc(infile)) != EOF)) {
-    c = tolower(c);
-
-    if (isalpha(c)) {
-      if (len <= MAX_WORD_LEN) {
-        word[cur_pos] = c;
-        cur_pos += 1;
+  int cur_len = 0;
+  do {
+    c = fgetc(infile);
+    if (isalpha(c) != 0) {
+      // c is alpha
+      if (cur_len < MAX_WORD_LEN) {
+        cur_len += 1;
+      } else if (cur_len == MAX_WORD_LEN) {
+        cur_len = 1;
+        num_words += 1;
       }
-      len += 1;
-    } else if (!isalpha(c) && len > 1 && len <= MAX_WORD_LEN) {
-      word[cur_pos] = '\0';
-      add_word(wclist, word);
-      len = 0;
-      cur_pos = 0;
-    } else {
-      len = 0;
-      cur_pos = 0;
+    } else if (cur_len >= 1) {
+      cur_len = 0; 
+      num_words += 1;
     }
-  }
 
-  if (len > 1 && len < MAX_WORD_LEN) {
-    word[len] = '\0';
-    add_word(wclist, word);
-  }
-
+  } while (c != EOF);
+  return num_words;
 }
 
 /*
