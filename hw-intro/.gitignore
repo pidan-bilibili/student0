@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 .DS_Store
+=======
+>>>>>>> d898a98 (Add hw-intro gitignore and wc_sort.o)
 limits
 map
 words/words
