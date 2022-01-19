@@ -52,7 +52,7 @@ int num_words(FILE* infile) {
     if (isalpha(c)) {
       len++;
     } else {
-      if (len != 1 && len <= MAX_WORD_LEN && len != 0) {
+      if (len != 1 && len < MAX_WORD_LEN && len != 0) {
         num_words++;
       } 
 
@@ -60,7 +60,7 @@ int num_words(FILE* infile) {
     }
   }
 
-  if (len > 1 && len <= MAX_WORD_LEN) {
+  if (len > 1 && len < MAX_WORD_LEN) {
     num_words++;
   }
 
@@ -88,7 +88,7 @@ void count_words(WordCount **wclist, FILE *infile) {
         cur_pos += 1;
       }
       len += 1;
-    } else if (!isalpha(c) && len > 1 && len <= MAX_WORD_LEN) {
+    } else if (!isalpha(c) && len > 1 && len < MAX_WORD_LEN) {
       word[cur_pos] = '\0';
       add_word(wclist, word);
       len = 0;
@@ -99,7 +99,7 @@ void count_words(WordCount **wclist, FILE *infile) {
     }
   }
 
-  if (len > 1 && len <= MAX_WORD_LEN) {
+  if (len > 1 && len < MAX_WORD_LEN) {
     word[len] = '\0';
     add_word(wclist, word);
   }
