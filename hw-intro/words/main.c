@@ -53,13 +53,11 @@ int num_words(FILE* infile) {
     if (isalpha(c)) {
       if (len < MAX_WORD_LEN) {
         len++;
-      } else {
-        len = 0;
+      }
+    } else {
+      if (len > 1) {
         num_words++;
       }
-
-    } else if (len > 1) {
-      num_words++;
       len = 0;
     }
   }
@@ -90,17 +88,13 @@ void count_words(WordCount **wclist, FILE *infile) {
       if (len < MAX_WORD_LEN) {
         word[len] = c;
         len++;
-      } else {
+      } 
+    } else {
+      if (len > 1) {
         word[len] = '\0';
         len = 0;
         add_word(wclist, word);
       }
-
-
-    } else if (len > 1) {
-      word[len] = '\0';
-      len = 0;
-      add_word(wclist, word);
     }
   }
 
@@ -197,7 +191,7 @@ int main (int argc, char *argv[]) {
       } else {
         count_words(&word_counts, infile);
       }
-      
+
   } else {
     for (i = optind; i < argc; i++) {
       infile = fopen(argv[i], "r");
