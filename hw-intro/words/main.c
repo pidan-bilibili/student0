@@ -36,7 +36,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 WordCount *word_counts = NULL;
 
 /* The maximum length of each word in a file */
-#define MAX_WORD_LEN 4
+#define MAX_WORD_LEN 64
 
 /*
  * 3.1.1 Total Word Count
@@ -64,6 +64,7 @@ int num_words(FILE* infile) {
     }
   }
 
+  // handle eof 
   if (len > 1) {
     num_words++;
   }
@@ -78,35 +79,37 @@ int num_words(FILE* infile) {
  * Useful functions: fgetc(), isalpha(), tolower(), add_word().
  */
 void count_words(WordCount **wclist, FILE *infile) {
-  char* word = malloc(MAX_WORD_LEN + 2);
+  char* word = malloc(MAX_WORD_LEN + 1);
   char c;
   int len = 0;
-  int cur_pos = 0;
 
   while ((c=fgetc(infile)) != EOF) {
     c = tolower(c);
 
     if (isalpha(c)) {
-      if (len <= MAX_WORD_LEN) {
-        word[cur_pos] = c;
-        cur_pos += 1;
+      if (len < MAX_WORD_LEN) {
+        word[len] = c;
+        len++;
+      } else {
+        word[len] = '\0';
+        len = 0;
+        add_word(wclist, word);
       }
-      len += 1;
-    } else if (!isalpha(c) && len > 1 && len <= MAX_WORD_LEN) {
-      word[cur_pos] = '\0';
+
+
+    } else if (len > 1) {
+      word[len] = '\0';
+      len = 0;
       add_word(wclist, word);
-      len = 0;
-      cur_pos = 0;
-    } else {
-      len = 0;
-      cur_pos = 0;
     }
   }
 
-  if (len > 1 && len < MAX_WORD_LEN) {
-    word[cur_pos] = '\0';
+  if (len > 1) {
+    word[len] = '\0';
+    len = 0;
     add_word(wclist, word);
   }
+
 
 }
 
