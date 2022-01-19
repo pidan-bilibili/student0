@@ -1,5 +1,3 @@
-abc rrrrr
-def i
-abc
-abc
-def
+qqq qqq
+yyy1yyy
+q
