@@ -55,7 +55,7 @@ int num_words(FILE* infile) {
       if (len != 1 && len <= MAX_WORD_LEN && len != 0) {
         num_words++;
       } 
-
+      
       len = 0;
     }
   }
