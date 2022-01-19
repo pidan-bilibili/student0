@@ -36,7 +36,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 WordCount *word_counts = NULL;
 
 /* The maximum length of each word in a file */
-#define MAX_WORD_LEN 64
+#define MAX_WORD_LEN 4
 
 /*
  * 3.1.1 Total Word Count
@@ -46,26 +46,25 @@ WordCount *word_counts = NULL;
  */
 int num_words(FILE* infile) {
   int num_words = 0;
-  char c;
   int len = 0;
-  while (((c = fgetc(infile)) != EOF)) {
+  char c;
+
+  while ((c=fgetc(infile)) != EOF) {
     if (isalpha(c)) {
       if (len < MAX_WORD_LEN) {
         len++;
-      } else if (len == MAX_WORD_LEN) {
-        len = 1;
-        num_words++;
-      }
-    } else {
-      if (len >= 1) {
+      } else {
         len = 0;
         num_words++;
-      } 
+      }
+
+    } else if (len > 1) {
+      num_words++;
       len = 0;
     }
   }
 
-  if (len > 1 && len <= MAX_WORD_LEN) {
+  if (len > 1) {
     num_words++;
   }
 
@@ -84,7 +83,7 @@ void count_words(WordCount **wclist, FILE *infile) {
   int len = 0;
   int cur_pos = 0;
 
-  while (((c=fgetc(infile)) != EOF)) {
+  while ((c=fgetc(infile)) != EOF) {
     c = tolower(c);
 
     if (isalpha(c)) {
