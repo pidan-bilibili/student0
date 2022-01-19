@@ -92,9 +92,9 @@ void count_words(WordCount **wclist, FILE *infile) {
     } else {
       if (len > 1) {
         word[len] = '\0';
-        len = 0;
         add_word(wclist, word);
       }
+      len = 0;
     }
   }
 
