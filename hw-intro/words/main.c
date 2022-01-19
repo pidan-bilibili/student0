@@ -60,7 +60,7 @@ int num_words(FILE* infile) {
     }
   }
 
-  if (len > 1) {
+  if (len > 1 && len <= MAX_WORD_LEN) {
     num_words++;
   }
 
