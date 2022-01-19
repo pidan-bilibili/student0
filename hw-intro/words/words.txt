@@ -1,3 +1,1 @@
-uuuu qqqqrqqqq
-rrrrr qqqq
-qqqq
+'abc\ndef\nabc\nabc\ndef\n
