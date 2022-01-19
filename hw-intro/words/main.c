@@ -47,41 +47,6 @@ WordCount *word_counts = NULL;
 int num_words(FILE* infile) {
   int num_words = 0;
   char c;
-  int len = 0;
-
-  while (((c = fgetc(infile)) != EOF)) {
-    if (isalpha(c)) {
-      if (len < MAX_WORD_LEN) {
-        len++;
-      } else if (len == MAX_WORD_LEN) {
-        len = 1;
-        num_words++;
-      }
-    } else {
-      if (len >= 1) {
-        len = 0;
-        num_words++;
-      } 
-      len = 0;
-    }
-  }
-
-  if (len > 1 && len <= MAX_WORD_LEN) {
-    num_words++;
-  }
-
-  return num_words;
-}
-
-/*
- * 3.1.2 Word Frequency Count
- *
- * Given infile, extracts and adds each word in the FILE to `wclist`.
- * Useful functions: fgetc(), isalpha(), tolower(), add_word().
- */
-void count_words(WordCount **wclist, FILE *infile) {
-  int num_words = 0;
-  char c;
   int cur_len = 0;
   do {
     c = fgetc(infile);
@@ -100,6 +65,45 @@ void count_words(WordCount **wclist, FILE *infile) {
 
   } while (c != EOF);
   return num_words;
+}
+
+/*
+ * 3.1.2 Word Frequency Count
+ *
+ * Given infile, extracts and adds each word in the FILE to `wclist`.
+ * Useful functions: fgetc(), isalpha(), tolower(), add_word().
+ */
+void count_words(WordCount **wclist, FILE *infile) {
+  char* word = malloc(MAX_WORD_LEN + 2);
+  char c;
+  int len = 0;
+  int cur_pos = 0;
+
+  while (((c=fgetc(infile)) != EOF)) {
+    c = tolower(c);
+
+    if (isalpha(c)) {
+      if (len <= MAX_WORD_LEN) {
+        word[cur_pos] = c;
+        cur_pos += 1;
+      }
+      len += 1;
+    } else if (!isalpha(c) && len > 1 && len <= MAX_WORD_LEN) {
+      word[cur_pos] = '\0';
+      add_word(wclist, word);
+      len = 0;
+      cur_pos = 0;
+    } else {
+      len = 0;
+      cur_pos = 0;
+    }
+  }
+
+  if (len > 1 && len < MAX_WORD_LEN) {
+    word[cur_pos] = '\0';
+    add_word(wclist, word);
+  }
+
 }
 
 /*
