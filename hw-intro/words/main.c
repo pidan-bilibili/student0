@@ -36,7 +36,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 WordCount *word_counts = NULL;
 
 /* The maximum length of each word in a file */
-#define MAX_WORD_LEN 64
+#define MAX_WORD_LEN 4
 
 /*
  * 3.1.1 Total Word Count
@@ -49,11 +49,16 @@ int num_words(FILE* infile) {
   int c;
   int len = 0;
   while (((c = fgetc(infile)) != EOF)) {
-    if (!isalpha(c) && len <= MAX_WORD_LEN) {
-      num_words++;
-      len = 0;
-    } else {
+    printf("%d", len);
+    if (isalpha(c)) {
       len++;
+    } else {
+
+      if (len != 1 && len <= MAX_WORD_LEN) {
+        num_words++;
+      } 
+
+      len = 0;
     }
   }
 
