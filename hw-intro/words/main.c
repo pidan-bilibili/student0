@@ -184,10 +184,11 @@ int main (int argc, char *argv[]) {
     infile = stdin;
 
     if (count_mode) {
-        total_words += num_words(infile);
-      } else {
-        count_words(&word_counts, infile);
-      }
+      total_words += num_words(infile);
+      } 
+    if (freq_mode) {
+      count_words(&word_counts, infile);
+    }
 
   } else {
     for (i = optind; i < argc; i++) {
@@ -195,7 +196,9 @@ int main (int argc, char *argv[]) {
 
       if (count_mode) {
         total_words += num_words(infile);
-      } else {
+      } 
+
+      if (freq_mode) {
         count_words(&word_counts, infile);
       }
 
