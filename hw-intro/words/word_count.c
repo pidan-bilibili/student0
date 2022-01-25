@@ -70,7 +70,6 @@ void add_word(WordCount **wclist, char *word) {
     new_wc->next = *wclist;
     *wclist = new_wc;
   }
-
 }
 
 void fprint_words(WordCount *wchead, FILE *ofile) {
