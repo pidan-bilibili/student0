@@ -1,0 +1,32 @@
+FAIL
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (syn-remove) begin
+  (syn-remove) create "deleteme"
+  (syn-remove) open "deleteme"
+  (syn-remove) remove "deleteme"
+  (syn-remove) write "deleteme"
+  (syn-remove) seek "deleteme" to 0
+  (syn-remove) read "deleteme"
+  (syn-remove) close "deleteme"
+  (syn-remove) end
+Differences in `diff -u' format:
+- (syn-remove) begin
+- (syn-remove) create "deleteme"
+- (syn-remove) open "deleteme"
+- (syn-remove) remove "deleteme"
+- (syn-remove) write "deleteme"
+- (syn-remove) seek "deleteme" to 0
+- (syn-remove) read "deleteme"
+- (syn-remove) close "deleteme"
+- (syn-remove) end
++ Page fault at 0: not present error reading page in user context.
++ syn-remove: dying due to interrupt 0x0e (#PF Page-Fault Exception).
++ Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048c2e
++  cr2=00000000 error=00000004
++  eax=00000000 ebx=00000000 ecx=00000000 edx=00000000
++  esi=00000000 edi=00000000 esp=bfffffb0 ebp=bfffffc8
++  cs=001b ds=0023 es=0023 ss=0023
+
+(Process exit codes are excluded for matching purposes.)

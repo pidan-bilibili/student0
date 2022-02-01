@@ -1,0 +1,14 @@
+FAIL
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (stack-align) begin
+  (stack-align) last nybble of candidate is 0x0
+  (stack-align) end
+  stack-align-2: exit(0)
+Differences in `diff -u' format:
+- (stack-align) begin
+- (stack-align) last nybble of candidate is 0x0
+- (stack-align) end
+- stack-align-2: exit(0)
++ load: stack-align-2 a: open failed

@@ -1,0 +1,37 @@
+Copying tests/filesys/base/sm-seq-random to scratch partition...
+qemu-system-i386 -device isa-debug-exit -hda /tmp/dv2V1kEJsg.dsk -m 4 -net none -nographic -monitor null
+PiLo hda1
+Loading............
+Kernel command line: -q -f extract run sm-seq-random
+Pintos booting with 3,968 kB RAM...
+367 pages available in kernel pool.
+367 pages available in user pool.
+Calibrating timer...  67,891,200 loops/s.
+hda: 5,040 sectors (2 MB), model "QM00001", serial "QEMU HARDDISK"
+hda1: 207 sectors (103 kB), Pintos OS kernel (20)
+hda2: 4,096 sectors (2 MB), Pintos file system (21)
+hda3: 128 sectors (64 kB), Pintos scratch (22)
+filesys: using hda2
+scratch: using hda3
+Formatting file system...done.
+Boot complete.
+Extracting ustar archive from scratch device into file system...
+Putting 'sm-seq-random' into the file system...
+Erasing ustar archive...
+Executing 'sm-seq-random':
+Page fault at 0: not present error reading page in user context.
+sm-seq-random: dying due to interrupt 0x0e (#PF Page-Fault Exception).
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048ad2
+ cr2=00000000 error=00000004
+ eax=00000000 ebx=00000000 ecx=00000000 edx=00000000
+ esi=00000000 edi=00000000 esp=bfffffb0 ebp=bfffffc8
+ cs=001b ds=0023 es=0023 ss=0023
+Execution of 'sm-seq-random' complete.
+Timer: 73 ticks
+Thread: 6 idle ticks, 25 kernel ticks, 42 user ticks
+hda2 (filesys): 69 reads, 260 writes
+hda3 (scratch): 127 reads, 2 writes
+Console: 1212 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...

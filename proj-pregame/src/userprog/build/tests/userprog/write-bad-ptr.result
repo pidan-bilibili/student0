@@ -1,0 +1,35 @@
+FAIL
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (write-bad-ptr) begin
+  (write-bad-ptr) open "sample.txt"
+  (write-bad-ptr) end
+  write-bad-ptr: exit(0)
+Differences in `diff -u' format:
+- (write-bad-ptr) begin
+- (write-bad-ptr) open "sample.txt"
+- (write-bad-ptr) end
+- write-bad-ptr: exit(0)
++ Page fault at 0: not present error reading page in user context.
++ write-bad-ptr: dying due to interrupt 0x0e (#PF Page-Fault Exception).
++ Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x80480fa
++  cr2=00000000 error=00000004
++  eax=00000000 ebx=00000000 ecx=00000000 edx=00000000
++  esi=00000000 edi=00000000 esp=bfffffb0 ebp=bfffffc8
++  cs=001b ds=0023 es=0023 ss=0023
+Acceptable output:
+  (write-bad-ptr) begin
+  (write-bad-ptr) open "sample.txt"
+  write-bad-ptr: exit(-1)
+Differences in `diff -u' format:
+- (write-bad-ptr) begin
+- (write-bad-ptr) open "sample.txt"
+- write-bad-ptr: exit(-1)
++ Page fault at 0: not present error reading page in user context.
++ write-bad-ptr: dying due to interrupt 0x0e (#PF Page-Fault Exception).
++ Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x80480fa
++  cr2=00000000 error=00000004
++  eax=00000000 ebx=00000000 ecx=00000000 edx=00000000
++  esi=00000000 edi=00000000 esp=bfffffb0 ebp=bfffffc8
++  cs=001b ds=0023 es=0023 ss=0023

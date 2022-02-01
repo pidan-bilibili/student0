@@ -1,0 +1,37 @@
+Copying tests/userprog/create-null to scratch partition...
+qemu-system-i386 -device isa-debug-exit -hda /tmp/Ii0OktYvV2.dsk -m 4 -net none -nographic -monitor null
+PiLo hda1
+Loading............
+Kernel command line: -q -f extract run create-null
+Pintos booting with 3,968 kB RAM...
+367 pages available in kernel pool.
+367 pages available in user pool.
+Calibrating timer...  68,710,400 loops/s.
+hda: 5,040 sectors (2 MB), model "QM00001", serial "QEMU HARDDISK"
+hda1: 207 sectors (103 kB), Pintos OS kernel (20)
+hda2: 4,096 sectors (2 MB), Pintos file system (21)
+hda3: 124 sectors (62 kB), Pintos scratch (22)
+filesys: using hda2
+scratch: using hda3
+Formatting file system...done.
+Boot complete.
+Extracting ustar archive from scratch device into file system...
+Putting 'create-null' into the file system...
+Erasing ustar archive...
+Executing 'create-null':
+Page fault at 0: not present error reading page in user context.
+create-null: dying due to interrupt 0x0e (#PF Page-Fault Exception).
+Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x80480d0
+ cr2=00000000 error=00000004
+ eax=00000000 ebx=00000000 ecx=00000000 edx=00000000
+ esi=00000000 edi=00000000 esp=bfffffb0 ebp=bfffffc8
+ cs=001b ds=0023 es=0023 ss=0023
+Execution of 'create-null' complete.
+Timer: 69 ticks
+Thread: 5 idle ticks, 24 kernel ticks, 40 user ticks
+hda2 (filesys): 67 reads, 252 writes
+hda3 (scratch): 123 reads, 2 writes
+Console: 1202 characters output
+Keyboard: 0 keys pressed
+Exception: 1 page faults
+Powering off...

@@ -1,0 +1,15 @@
+FAIL
+Kernel panic in run: PANIC at ../../userprog/exception.c:90 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc002a954 0xc002e60b 0xc0022184 0xc00223da 0xc0030943 0xc00309a1 0xc0030a1d 0xc00308f4 0xc0020a64 0xc0020b8f 0xc00203d9
+Translation of call stack:
+0xc002a954: debug_panic (/home/cc/cs162/sp22/class/cs162-aan/code/personal/proj-pregame/src/lib/kernel/debug.c:35)
+0xc002e60b: kill (/home/cc/cs162/sp22/class/cs162-aan/code/personal/proj-pregame/src/userprog/exception.c:95)
+0xc0022184: intr_handler (/home/cc/cs162/sp22/class/cs162-aan/code/personal/proj-pregame/src/threads/interrupt.c:339)
+0xc00223da: intr_entry (threads/intr-stubs.S:38)
+0xc0030943: fpu_push (/home/cc/cs162/sp22/class/cs162-aan/code/personal/proj-pregame/src/lib/float.h:9)
+0xc00309a1: fpu_push_pop (/home/cc/cs162/sp22/class/cs162-aan/code/personal/proj-pregame/src/tests/userprog/kernel/fp-kasm.c:32)
+0xc0030a1d: test_fp_kasm (/home/cc/cs162/sp22/class/cs162-aan/code/personal/proj-pregame/src/tests/userprog/kernel/fp-kasm.c:43)
+0xc00308f4: run_userprog_test (/home/cc/cs162/sp22/class/cs162-aan/code/personal/proj-pregame/src/tests/userprog/kernel/tests.c:20)
+0xc0020a64: run_userprog_kernel_task (/home/cc/cs162/sp22/class/cs162-aan/code/personal/proj-pregame/src/threads/init.c:330)
+0xc0020b8f: run_actions (/home/cc/cs162/sp22/class/cs162-aan/code/personal/proj-pregame/src/threads/init.c:391)
+0xc00203d9: main (/home/cc/cs162/sp22/class/cs162-aan/code/personal/proj-pregame/src/threads/init.c:141)

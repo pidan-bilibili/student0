@@ -1,0 +1,15 @@
+FAIL
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (iloveos) begin
+  I love CS162
+  (iloveos) end
+  iloveos: exit(0)
+Differences in `diff -u' format:
+- (iloveos) begin
+- I love CS162
+- (iloveos) end
+- iloveos: exit(0)
+
+(User fault messages are excluded for matching purposes.)

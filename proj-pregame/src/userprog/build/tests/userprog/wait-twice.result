@@ -1,0 +1,26 @@
+FAIL
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (wait-twice) begin
+  (child-simple) run
+  child-simple: exit(81)
+  (wait-twice) wait(exec()) = 81
+  (wait-twice) wait(exec()) = -1
+  (wait-twice) end
+  wait-twice: exit(0)
+Differences in `diff -u' format:
+- (wait-twice) begin
+- (child-simple) run
+- child-simple: exit(81)
+- (wait-twice) wait(exec()) = 81
+- (wait-twice) wait(exec()) = -1
+- (wait-twice) end
+- wait-twice: exit(0)
++ Page fault at 0: not present error reading page in user context.
++ wait-twice: dying due to interrupt 0x0e (#PF Page-Fault Exception).
++ Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x80480ee
++  cr2=00000000 error=00000004
++  eax=00000000 ebx=00000000 ecx=00000000 edx=00000000
++  esi=00000000 edi=00000000 esp=bfffffb0 ebp=bfffffc8
++  cs=001b ds=0023 es=0023 ss=0023

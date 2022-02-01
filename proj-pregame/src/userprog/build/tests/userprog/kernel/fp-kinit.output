@@ -1,0 +1,33 @@
+qemu-system-i386 -device isa-debug-exit -hda /tmp/UImF6sDBjB.dsk -m 4 -net none -nographic -monitor null
+PiLo hda1
+Loading............
+Kernel command line: -q -f rukt fp-kinit
+Pintos booting with 3,968 kB RAM...
+367 pages available in kernel pool.
+367 pages available in user pool.
+Calibrating timer...  65,740,800 loops/s.
+hda: 5,040 sectors (2 MB), model "QM00001", serial "QEMU HARDDISK"
+hda1: 207 sectors (103 kB), Pintos OS kernel (20)
+hda2: 4,096 sectors (2 MB), Pintos file system (21)
+filesys: using hda2
+Formatting file system...done.
+Boot complete.
+Executing 'fp-kinit':
+(fp-kinit) begin
+Interrupt 0x07 (#NM Device Not Available Exception) at eip=0xc0030a59
+ cr2=00000000 error=00000000
+ eax=00000001 ebx=000000d0 ecx=0000000a edx=c003b9b8
+ esi=000001be edi=00000000 esp=00000001 ebp=c000eee8
+ cs=0008 ds=0010 es=0010 ss=ef18
+Kernel PANIC at ../../userprog/exception.c:90 in kill(): Kernel bug - unexpected interrupt in kernel
+Call stack: 0xc002a954 0xc002e60b 0xc0022184 0xc00223da 0xc0030a59 0xc0030aed 0xc00308f4 0xc0020a64 0xc0020b8f 0xc00203d9.
+The `backtrace' program can make call stacks useful.
+Read "Backtraces" in the "Debugging Tools" chapter
+of the Pintos documentation for more information.
+Timer: 59 ticks
+Thread: 0 idle ticks, 27 kernel ticks, 32 user ticks
+hda2 (filesys): 3 reads, 6 writes
+Console: 1182 characters output
+Keyboard: 0 keys pressed
+Exception: 0 page faults
+Powering off...

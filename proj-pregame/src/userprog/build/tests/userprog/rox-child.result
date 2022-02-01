@@ -1,0 +1,38 @@
+FAIL
+Test output failed to match any acceptable form.
+
+Acceptable output:
+  (rox-child) begin
+  (rox-child) open "child-rox"
+  (rox-child) read "child-rox"
+  (rox-child) write "child-rox"
+  (rox-child) exec "child-rox 1"
+  (child-rox) begin
+  (child-rox) try to write "child-rox"
+  (child-rox) try to write "child-rox"
+  (child-rox) end
+  child-rox: exit(12)
+  (rox-child) write "child-rox"
+  (rox-child) end
+  rox-child: exit(0)
+Differences in `diff -u' format:
+- (rox-child) begin
+- (rox-child) open "child-rox"
+- (rox-child) read "child-rox"
+- (rox-child) write "child-rox"
+- (rox-child) exec "child-rox 1"
+- (child-rox) begin
+- (child-rox) try to write "child-rox"
+- (child-rox) try to write "child-rox"
+- (child-rox) end
+- child-rox: exit(12)
+- (rox-child) write "child-rox"
+- (rox-child) end
+- rox-child: exit(0)
++ Page fault at 0: not present error reading page in user context.
++ rox-child: dying due to interrupt 0x0e (#PF Page-Fault Exception).
++ Interrupt 0x0e (#PF Page-Fault Exception) at eip=0x8048218
++  cr2=00000000 error=00000004
++  eax=00000000 ebx=00000000 ecx=00000000 edx=00000000
++  esi=00000000 edi=00000000 esp=bfffffb0 ebp=bfffffc8
++  cs=001b ds=0023 es=0023 ss=0023
